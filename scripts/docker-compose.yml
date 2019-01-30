@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  expense-svc:
+    image: coster.io/expense-svc
+    container_name: expense-svc 
+    ports:
+      - "9000:8080"
+
+  user-mgmt-svc:
+    image: coster.io/user-mgmt-svc
+    container_name: user-mgmt-svc
+    ports:
+      - "9001:8080"
