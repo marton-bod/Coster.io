@@ -6,6 +6,9 @@ services:
     container_name: expense-svc 
     ports:
       - "9000:8080"
+    environment:
+      - USER_SERVICE_HOST=user-mgmt-svc
+      - USER_SERVICE_PORT=8080 
 
   user-mgmt-svc:
     image: coster.io/user-mgmt-svc
