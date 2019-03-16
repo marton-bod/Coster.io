@@ -8,7 +8,7 @@ Stay in the root of this temp working folder (without cd-ing into the above chec
 * Run: `bash Coster.io/scripts/gitCloneProjects.sh`
 
 ### Build all apps:
-* Prerequisites: npm, maven, jdk11
+* Prerequisites: node + npm, maven, jdk11
 * Run: `bash Coster.io/scripts/buildServices.sh`
 
 ### Run all apps:
