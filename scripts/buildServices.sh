@@ -4,7 +4,7 @@ checkError() {
         exit 1
     fi
 }
-
+echo "Starting maven builds."
 cd user_management_svc
 mvn clean install
 checkError
@@ -18,6 +18,7 @@ mvn clean install
 checkError
 
 cd ../coster-frontend
+echo "Starting npm install. This might take a few minutes..."
 npm install
 checkError
 
