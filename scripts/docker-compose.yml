@@ -5,26 +5,46 @@ services:
     image: coster.io/expense-svc
     container_name: expense-svc 
     ports:
-      - "9000:8080"
+      - "9000:9000"
     environment:
-      - USER_SERVICE_HOST=user-mgmt-svc
-      - USER_SERVICE_PORT=8080
+      - SPRING_PROFILES_ACTIVE=dev
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5050,server=y,suspend=n
 
   dashboard-svc:
     image: coster.io/dashboard-svc
     container_name: dashboard-svc 
     ports:
-      - "9002:8080"
+      - "9002:9002"
     environment:
-      - USER_SERVICE_HOST=user-mgmt-svc
-      - USER_SERVICE_PORT=8080
-      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5050,server=y,suspend=n  
+      - SPRING_PROFILES_ACTIVE=dev
+      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5051,server=y,suspend=n  
 
   user-mgmt-svc:
     image: coster.io/user-mgmt-svc
     container_name: user-mgmt-svc
     ports:
-      - "9001:8080"
+      - "9001:9001"
     environment:
-      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5051,server=y,suspend=n
+      - SPRING_PROFILES_ACTIVE=dev
+      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5052,server=y,suspend=n
+
+  notification-svc:
+    image: coster.io/notification-svc
+    container_name: notification-svc
+    ports:
+      - "9003:9003"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5053,server=y,suspend=n
+
+  postgres:
+    image: postgres:latest
+    container_name: coster-postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=coster
+
+

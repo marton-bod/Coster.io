@@ -1,11 +1,7 @@
-cd user_management_svc/service
-mvn spring-boot:run -q &
+cd Coster.io/scripts
+docker-compose up -d
 
-cd ../../expense_svc
-mvn spring-boot:run -q &
-
-cd ../dashboard_svc
-mvn spring-boot:run -q &
-
-cd ../coster-frontend
-npm start
+cd ../../coster-frontend
+echo "Now launching frontend locally. You can shut it down by pressing CTRL + C."
+echo "To shut down the backend services, run the stopServices script."
+npm run dev

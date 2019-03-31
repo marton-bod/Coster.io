@@ -4,20 +4,25 @@ checkError() {
         exit 1
     fi
 }
+
 echo "Starting maven builds."
-cd user_management_svc
-mvn clean install
+cd coster_notification_svc
+mvn clean install -Pdocker
 checkError
 
-cd ../expense_svc
-mvn clean install
+cd ../coster_user_management_svc
+mvn clean install -Pdocker
 checkError
 
-cd ../dashboard_svc
-mvn clean install
+cd ../coster_expense_svc
+mvn clean install -Pdocker
 checkError
 
-cd ../coster-frontend
+cd ../coster_dashboard_svc
+mvn clean install -Pdocker
+checkError
+
+cd ../coster_frontend
 echo "Starting npm install. This might take a few minutes..."
 npm install
 checkError

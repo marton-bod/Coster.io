@@ -8,12 +8,12 @@ Stay in the root of this temp working folder (without cd-ing into the above chec
 * Run: `bash Coster.io/scripts/gitCloneProjects.sh`
 
 ### Build all apps:
-* Prerequisites: npm, maven, jdk11
+* Prerequisites: npm, maven, jdk11, docker
 * Run: `bash Coster.io/scripts/buildServices.sh`
 
 ### Run all apps:
 * Run: `bash Coster.io/scripts/runServices.sh`
-* Services will start on ports: 3000, 9000, 9001, 9002
+* Services will start on ports: 3000, 9000, 9001, 9002, 9003
 * Browser session will automatically open on localhost:3000
 
 ### Stop all apps:
