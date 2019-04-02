@@ -13,9 +13,9 @@ Stay in the root of this temp working folder (without cd-ing into the above chec
 
 ### Run all apps:
 * Run: `bash Coster.io/scripts/runServices.sh`
-* Services will start on ports: 3000, 9000, 9001, 9002, 9003
-* Browser session will automatically open on localhost:3000
-* The services will attempt to connect to a PostgreSQL server running locally on 5432
+* This will start the Spring Boot microservices on ports: 9000, 9001, 9002, 9003
+  and a containerized PostgreSQL on port 5432
+* Browser session for React app will automatically open on localhost:3000
 
 ### Stop all apps:
 - Run: `bash Coster.io/scripts/stopServices.sh`
