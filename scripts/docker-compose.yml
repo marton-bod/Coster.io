@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   expense-svc:
-    image: coster.io/expense-svc
+    image: martonbod/coster.io-expense-svc:1.0
     container_name: expense-svc 
     ports:
       - "9000:9000"
@@ -11,7 +11,7 @@ services:
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5050,server=y,suspend=n
 
   dashboard-svc:
-    image: coster.io/dashboard-svc
+    image: martonbod/coster.io-dashboard-svc:1.0
     container_name: dashboard-svc 
     ports:
       - "9002:9002"
@@ -20,7 +20,7 @@ services:
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5051,server=y,suspend=n  
 
   user-mgmt-svc:
-    image: coster.io/user-mgmt-svc
+    image: martonbod/coster.io-user-mgmt-svc:1.0
     container_name: user-mgmt-svc
     ports:
       - "9001:9001"
@@ -29,12 +29,14 @@ services:
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5052,server=y,suspend=n
 
   notification-svc:
-    image: coster.io/notification-svc
+    image: martonbod/coster.io-notification-svc:1.0
     container_name: notification-svc
     ports:
       - "9003:9003"
     environment:
       - SPRING_PROFILES_ACTIVE=dev
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5053,server=y,suspend=n
 
   postgres:
