@@ -1,9 +1,18 @@
 version: "3.3"
 
 services:
+    
+  frontend:
+    image: martonbod/coster.io-frontend:1.0
+    container_name: coster-frontend
+    restart: on-failure    
+    ports:
+      - "3000:3000"
+
   expense-svc:
     image: martonbod/coster.io-expense-svc:1.0
-    container_name: expense-svc 
+    container_name: coster-expense-svc 
+    restart: on-failure
     ports:
       - "9000:9000"
     environment:
@@ -12,7 +21,8 @@ services:
 
   dashboard-svc:
     image: martonbod/coster.io-dashboard-svc:1.0
-    container_name: dashboard-svc 
+    container_name: coster-dashboard-svc 
+    restart: on-failure
     ports:
       - "9002:9002"
     environment:
@@ -21,7 +31,8 @@ services:
 
   user-mgmt-svc:
     image: martonbod/coster.io-user-mgmt-svc:1.0
-    container_name: user-mgmt-svc
+    container_name: coster-user-mgmt-svc
+    restart: on-failure
     ports:
       - "9001:9001"
     environment:
@@ -30,7 +41,8 @@ services:
 
   notification-svc:
     image: martonbod/coster.io-notification-svc:1.0
-    container_name: notification-svc
+    container_name: coster-notification-svc
+    restart: on-failure
     ports:
       - "9003:9003"
     environment:
@@ -42,6 +54,7 @@ services:
   postgres:
     image: postgres:latest
     container_name: coster-postgres
+    restart: on-failure
     ports:
       - 5432:5432
     environment:
