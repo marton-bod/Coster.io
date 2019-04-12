@@ -3,7 +3,7 @@ version: "3.3"
 services:
     
   frontend:
-    image: martonbod/coster.io-frontend:1.0
+    image: martonbod/coster.io-frontend:1.1
     container_name: coster-frontend
     restart: on-failure    
     ports:
@@ -40,7 +40,7 @@ services:
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5052,server=y,suspend=n
 
   notification-svc:
-    image: martonbod/coster.io-notification-svc:1.0
+    image: martonbod/coster.io-notification-svc:1.1
     container_name: coster-notification-svc
     restart: on-failure
     ports:
