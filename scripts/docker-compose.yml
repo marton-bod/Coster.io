@@ -18,6 +18,11 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5050,server=y,suspend=n
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
 
   dashboard-svc:
     image: martonbod/coster.io-dashboard-svc:1.0
@@ -27,7 +32,12 @@ services:
       - "9002:9002"
     environment:
       - SPRING_PROFILES_ACTIVE=dev
-      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5051,server=y,suspend=n  
+      - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5051,server=y,suspend=n
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
 
   user-mgmt-svc:
     image: martonbod/coster.io-user-mgmt-svc:1.0
@@ -38,6 +48,11 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5052,server=y,suspend=n
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
 
   notification-svc:
     image: martonbod/coster.io-notification-svc:1.1
@@ -50,6 +65,11 @@ services:
       - SMTP_USERNAME=${SMTP_USERNAME}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5053,server=y,suspend=n
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
 
   postgres:
     image: postgres:latest
