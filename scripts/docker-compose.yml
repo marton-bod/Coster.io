@@ -3,14 +3,14 @@ version: "3.3"
 services:
     
   frontend:
-    image: martonbod/coster.io-frontend:1.1
+    image: martonbod/coster.io-frontend:latest
     container_name: coster-frontend
     restart: on-failure    
     ports:
       - "3000:3000"
 
   expense-svc:
-    image: martonbod/coster.io-expense-svc:1.0
+    image: martonbod/coster.io-expense-svc:latest
     container_name: coster-expense-svc 
     restart: on-failure
     ports:
@@ -19,10 +19,10 @@ services:
       - SPRING_PROFILES_ACTIVE=dev
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5050,server=y,suspend=n
     volumes:
-      - ./logs/coster_expense_svc.log:/coster_expense_svc.log
+      - ./logs:/logs
 
   dashboard-svc:
-    image: martonbod/coster.io-dashboard-svc:1.0
+    image: martonbod/coster.io-dashboard-svc:latest
     container_name: coster-dashboard-svc 
     restart: on-failure
     ports:
@@ -31,10 +31,10 @@ services:
       - SPRING_PROFILES_ACTIVE=dev
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5051,server=y,suspend=n
     volumes:
-      - ./logs/coster_dashboard_svc.log:/coster_dashboard_svc.log
+      - ./logs:/logs
 
   user-mgmt-svc:
-    image: martonbod/coster.io-user-mgmt-svc:1.0
+    image: martonbod/coster.io-user-mgmt-svc:latest
     container_name: coster-user-mgmt-svc
     restart: on-failure
     ports:
@@ -43,10 +43,10 @@ services:
       - SPRING_PROFILES_ACTIVE=dev
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5052,server=y,suspend=n
     volumes:
-      - ./logs/coster_user_mgmt_svc.log:/coster_user_mgmt_svc.log
+      - ./logs:/logs
 
   notification-svc:
-    image: martonbod/coster.io-notification-svc:1.1
+    image: martonbod/coster.io-notification-svc:latest
     container_name: coster-notification-svc
     restart: on-failure
     ports:
@@ -57,7 +57,7 @@ services:
       - SMTP_PASSWORD=${SMTP_PASSWORD}
       - JAVA_ARGS=-agentlib:jdwp=transport=dt_socket,address=*:5053,server=y,suspend=n
     volumes:
-      - ./logs/coster_notification_svc.log:/coster_notification_svc.log
+      - ./logs:/logs
 
   postgres:
     image: postgres:latest
